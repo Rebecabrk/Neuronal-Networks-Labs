@@ -1,0 +1,30 @@
+Notite Curs 3 RN
+
+Perceptron is linear classifier because it is defined by a linear equation.
+
+->The ⁡⁣⁢⁢𝘄𝗲𝗶𝗴𝗵𝘁𝘀⁡ define a normal vector (perpendicular to the surface) that we can consider a unit vector (of length 1)
+->The ⁡⁣⁢⁣𝗯𝗶𝗮𝘀⁡ defines the distance from the origin to the plane.
+->The ⁡⁣⁣⁢𝗱𝗼𝘁 𝗽𝗿𝗼𝗱𝘂𝗰𝘁⁡ will be the 𝘯𝘰𝘳𝘮 of the the weights.
+
+𝗙𝗼𝗿𝘄𝗮𝗿𝗱 𝗽𝗿𝗼𝗽𝗮𝗴𝗮𝘁𝗶𝗼𝗻
+    Is the process where the input data is passed through the perceptron to get the output.
+    1. Compute weighted sum of the inputs and the bias. 
+                                z = w * x + b 
+                                z​‌‍‍‍i​ = W​‌‍‍i​ * x + b​‌‍‍i​ (for multiclass classification)
+    
+    2. Apply activation function to transform the computed weighted sums into 𝘱𝘳𝘰𝘣𝘢𝘣𝘪𝘭𝘪𝘵𝘪𝘦𝘴!
+       The function can be      ->step function
+                                ->sigmoid function  
+                                ----------------------- 
+                                                (for binary classfication)
+
+                                ->softmax function => for multiclass classification
+                                             e^(z​‌‍‍i​)                                        
+                                        y​‌‍‍i​ = ------     
+                                            \sum​‌‍‍j​ (e^(z​‌‍‍j​))
+                                    ⁡⁢⁣⁣!⁡The predicted class corresponds to the index of the ⁡⁢⁣⁣highest⁡ probability
+
+    3. Evaluate the error by comparing the perceptron's output with the actual target value. For multiclass classfication cross entropy loss is commonly used.
+
+𝗚𝗿𝗮𝗱𝗶𝗲𝗻𝘁 𝗱𝗲𝘀𝗰𝗲𝗻𝘁       
+    Is the process of updating the weights and bias to minimize the error
