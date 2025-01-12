@@ -152,24 +152,22 @@ plt.ylabel('Total Reward')
 plt.title('Training Progress')
 plt.show()
 
-import torch
-
 def create_evaluation_video(agent, env, output_path="evaluation_video.mp4", max_steps=500):
     # Load the model from the file
     model_path = "flappy_bird_best_model.pth"
-    agent.model.load_state_dict(torch.load(model_path))
-    agent.model.eval()  # Set the model to evaluation mode
+    agent.load(model_path)
+    agent.q_network.eval()  # Set the model to evaluation mode
 
     fourcc = cv2.VideoWriter_fourcc(*'mp4v')
     fps = 30
-    video_writer = cv2.VideoWriter(output_path, fourcc, fps, (env.render(mode='rgb_array').shape[1], env.render(mode='rgb_array').shape[0]))
+    video_writer = cv2.VideoWriter(output_path, fourcc, fps, (env.render().shape[1], env.render().shape[0]))
     
     state, _ = env.reset()
     state = agent.preprocess_frame(state)
     total_reward = 0
 
     for _ in range(max_steps):
-        frame = env.render(mode='rgb_array')
+        frame = env.render()
         video_writer.write(frame)
         
         action = agent.act(state)
@@ -183,6 +181,12 @@ def create_evaluation_video(agent, env, output_path="evaluation_video.mp4", max_
 
     video_writer.release()
     env.close()
+
+env = gym.make('FlappyBird-v0', render_mode='rgb_array')
+action_size = env.action_space.n
+
+agent = QLearningAgent(action_size=action_size)
+env.reset()
 create_evaluation_video(agent, env, output_path="agent_performance.mp4")
 
 def create_md_report(output_path="report.md"):
