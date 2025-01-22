@@ -1,0 +1,5 @@
+pe noi ne intereseaza mai mult 𝗼𝘂𝘁𝗽𝘂𝘁 𝘂𝗹 decat schimba weight urile
+
+dropout :   anulam niste date
+            asignam niste probabilitati de dropout: 20% de neuroni ii fortez sa aiba valoarea 0 pt fiecare batch
+            valorile care nu s fortate 0 se amplifica (* 1/(1-p)) unde p este probabilitatea de dropout (pt 20%-> (*100/80))
